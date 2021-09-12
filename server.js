@@ -33,7 +33,7 @@ app.get("/api/:date", (req, res) => {
     if (new Date(Date.parse(date))){
         res.json({
             "unix": Date.parse( date),
-            "utc" : moment(nd).format("ddd, DD  MMM YYYY HH:mm:ss" )
+            "utc" : moment(nd).format("ddd, DD  MMM YYYY HH:mm:ss ZZ" )
         })
     }else if ( !isDate(date) ){
         res.json({
