@@ -18,22 +18,22 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(__dirname + '/views/index.html');
 });
 
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+    res.json({greeting: 'hello API'});
 });
 
 app.get("/api/:date", (req, res) => {
- const date = req.params.date
+    const date = req.params.date
     const nd = new Date(Date.parse(date))
     if (new Date(Date.parse(date))){
         res.json({
             "unix": Date.parse( date),
-            "utc" : moment(nd).format("ddd, DD  MMM YYYY HH:mm:ss ZZ" )
+            "utc" : moment(nd).format("ddd, DD  MMM YYYY HH:mm:ss") + " GMT"
         })
     }else if ( !isDate(date) ){
         res.json({
@@ -51,5 +51,5 @@ app.get("/api/:date", (req, res) => {
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT || 5000 , function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+    console.log('Your app is listening on port ' + listener.address().port);
 });
